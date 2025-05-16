@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Education on Wheels</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      background-color: #f0f7f7;
+      color: #222;
+      padding-bottom: 80px;
+      font-size: 1rem;
+    }
+
+    header {
+      background-color: #a7283c;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background: #ec1638;
+      padding: 0.5rem;
+      gap: 0.5rem;
+    }
+
+    nav button {
+      flex: 1 1 45%;
+      min-width: 120px;
+      margin: 0.25rem;
+      padding: 0.75rem;
+      background: #ce1937;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-size: 1rem;
+    }
+
+    nav button:hover,
+    nav button:focus {
+      background: #7c1f2d;
+      outline: none;
+    }
+
+    nav button.active {
+      background: #530c17;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+
+    section {
+      display: none;
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    h2 {
+      color: #530c17;
+      margin: 1rem 0;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    img, video {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    iframe {
+      width: 100%;
+      height: 512px;
+      border: none;
+      margin-bottom: 1rem;
+      border-radius:8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    ul, ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    ol ul {
+      margin-left: 1.5rem;
+    }
+
+    li span {
+      font-weight: bold;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #a7283c;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      z-index: 1000;
+    }
+
+    .galleryslide {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin:1rem 0rem;
+    }
+
+    .slidetrack {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 100%;
+    }
+
+    .slide {
+      min-width: 100%;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .slide img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .slidecontrols {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 1rem;
+    }
+
+    .carouselbutton {
+      background: rgba(255, 255, 255, 0.7);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 20px;
+      color: #333;
+      transition: background 0.3s;
+    }
+
+    .carouselbutton:hover {
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    a {
+      color: #005fa3;
+      text-decoration: underline;
+      transition: color 0.3s ease;
+    }
+
+    a:hover,
+    a:focus {
+      color: #d40029;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (min-width: 768px) {
+      nav button {
+        flex: 0 1 auto;
+        min-width: 150px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      nav {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      nav button {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Education on Wheels (Mobile Classroom Units)</h1>
+    <p>SDG 4 - Quality Education for All</p>
+  </header>
+
+  <nav role="navigation" aria-label="Main Navigation">
+    <button onclick="showSection('home'); setActive(this);" class="active">Home</button>
+    <button onclick="showSection('about'); setActive(this);">About</button>
+    <button onclick="showSection('media'); setActive(this);">Media</button>
+    <button onclick="showSection('contact'); setActive(this);">Contact</button>
+  </nav>
+
+  <main>
+    <section id="home" class="active">
+      <p>Welcome to our project on "Education on Wheels", a mobile classroom initiative to reach underserved communities and bring learning to every Filipino child.</p>
+      <h2>SDG 4 - Quality Education</h2>
+      <img src="img/homecover.jpg" alt="SDG 4: Quality Education Objective">
+      <p>The Philippine education system faces several key gaps that hinder progress toward SDG 4: Quality Education. A significant portion of students experience learning poverty, particularly in reading and comprehension, due to ineffective early instruction and large class sizes. Access remains unequal, especially in rural, indigenous, and low-income communities, where school facilities, internet connectivity, and teacher availability are limited. Many teachers lack adequate training and support, while the curriculum remains outdated and overloaded, failing to equip students with essential 21st-century skills. The digital divide further exacerbates learning inequalities, particularly highlighted during the COVID-19 pandemic. High dropout rates, especially at the secondary level, and limited opportunities for adult and lifelong learning also contribute to the country's ongoing education challenges.</p>
+    
+      <h2>External Resources</h2>
+      <ul>
+        <li><a href="https://www.un.org/sustainabledevelopment/education/" target="_blank" rel="noopener noreferrer">UN - Quality Education</a></li>
+        <li><a href="https://www.deped.gov.ph" target="_blank" rel="noopener noreferrer">Department of Education PH</a></li>
+        <li><a href="https://media.unesco.org/sites/default/files/webform/ed3002/390204eng.pdf" target="_blank" rel="noopener noreferrer">Transforming Education Towards SDG 4</a></li>
+        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9744361/" target="_blank" rel="noopener noreferrer">Reaching SDG 4: Our shared responsibility and renewed commitment to action</a></li>
+        <li><a href="https://link.springer.com/article/10.1007/s10639-022-11265-4" target="_blank" rel="noopener noreferrer">Sustainable Development Goal for Quality Education (SDG 4): A study on SDG 4 to extract the pattern of association among the indicators of SDG 4 employing a genetic algorithm</a></li>
+      </ul>
+    </section>
+
+    <section id="about">
+      <h2>About Education on Wheels</h2>
+      <img src="img/aboutphoto.jpg" alt="Mobile Classroom 1">
+      <p>Education on Wheels is a mobile learning initiative that transforms vehicles like buses or vans into traveling classrooms, bringing education directly to communities with limited or no access to traditional schools. Its primary purpose is to bridge educational gaps by reaching underserved populations—such as children in remote areas, out-of-school youth, and marginalized groups—who face barriers due to geography, poverty, or crisis situations. By offering flexible, accessible, and often tech-enabled instruction, Education on Wheels promotes inclusivity and equity in education, aligning closely with the goals of SDG 4: Quality Education.</p>
+      <h2>Key Features of the Solution</h2>
+      <ul>
+        <li><span>Classroom Bus or Van</span>: Outfitted with desks, whiteboard, solar panels, and climate control for all-weather operation.</li>
+        <li><span>Digital Resources</span>: Tablets/laptops preloaded with offline educational content (aligned with national curricula).</li>
+        <li><span>Mobile Internet</span>: Satellite or mobile network connection for real-time virtual lessons when signal allows.</li>
+        <li><span>Flexible Scheduling</span>: Visits based on regional school calendars, agricultural seasons, or community availability.</li>
+        <li><span>Multilingual Instruction</span>: Content in local languages and dialects to ensure inclusivity.</li>
+        <li><span>Hygiene KIts & Meals</span>: Promotes attendance by covering basic needs. Useful in refugee/disaster contexts.</li>
+      </ul>
+      <h2>Plans for Implementation</h2>
+      <img src="img/aboutphoto2.jpg" alt="Mobile Classroom 2">
+      <ol>
+        <li><span>Planning & Partnerships</span></li>
+        Partner with:
+        <ul>
+            <li>Local governments (for curriculum, student data)</li>
+            <li>NGOs (for logistics, local knowledge)</li>
+            <li>Tech firms (for equipment and software)</li>
+            <li>Conduct needs assessments to identify underserved areas.</li>
+        </ul>
+        <li><span>Design & Pilot</span></li>
+        <ul>
+            <li>Build 2–3 prototype vehicles with modular interiors.</li>
+            <li>Pilot in 2 rural regions with different terrains or demographic challenges.</li>
+            <li>Measure impact on attendance, literacy, and engagement.</li>
+        </ul>
+        <li><span>Scale & Sustain</span></li>
+        <ul>
+            <li>Train local educators to run and maintain units.</li>
+            <li>Develop community ownership models (e.g., rotating volunteers).</li>
+            <li>Secure long-term funding from government education budgets or CSR donors.</li>
+        </ul>
+      </ol>
+      <h2>Advantages</h2>
+      <ul>
+        <li><span>Flexible and Mobile</span>: Reaches children otherwise excluded from school systems.</li>
+        <li><span>Community-Integrated</span>: Builds trust and fosters local participation.</li>
+        <li><span>Emergency-Ready</span>: Can pivot to areas affected by displacement, conflict, or natural disasters.</li>
+      </ul>
+      <h2>Expected Impact</h2>
+      <img src="img/aboutphoto3.jpg" alt="Children Studying">
+      <ul>
+        <li>Improve literacy and numeracy rates in remote areas.</li>
+        <li>Reduce school dropout rates, especially among girls and working children.</li>
+        <li>Increase community engagement in education.</li>
+      </ul>
+
+      <h2>External Resources</h2>
+      <ul>
+        <li><a href="https://www.imodular.com/portable-classroom-pros-and-cons/" target="_blank" rel="noopener noreferrer">The Pros and Cons of Portable Classrooms: Is it the Right Choice for Your School?</a></li>
+        <li><a href="https://www.nlc.org/article/2025/01/30/how-mobile-classrooms-help-cities-reach-children-families-experiencing-homelessness/" target="_blank" rel="noopener noreferrer">How Mobile Classrooms Help Cities Reach Children & Families Experiencing Homelessness</a></li>
+        <li><a href="https://www.satelliteco.com/blog/portable-classroom-benefits/" target="_blank" rel="noopener noreferrer">How Portable Classrooms Can Benefit Your School</a></li>
+        <li><a href="https://blurredbylines.com/blog/school-portables-classroom-modular-buildings/" target="_blank" rel="noopener noreferrer">How School Portables Became Permanent Classrooms</a></li>
+        <li><a href="https://edtechmagazine.com/k12/article/2018/07/mobile-classrooms-bring-stem-where-students-need-it?" target="_blank" rel="noopener noreferrer">Mobile Classrooms Bring STEM Where Students Need IT</a></li>
+      </ul>
+    </section>
+
+    <section id="media">
+      <h2>SDG 4: Quality Education Videos</h2>
+      <iframe src="https://www.youtube.com/embed/mCU3n6y-uaU?si=ha-IwMGit_9seqvv" title="SDG 4: QUALITY EDUCATION" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/tlhp3K1veoQ?si=-wcGghpwclVZbMRh" title="Sustainable Development Goal 4 - Quality Education - Rorden Wilkinson" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/dKip3rpuEvY?si=rM8KcwZK51gvV2d3" title="Why Quality Education Matters - Sustainable Development Goal 4" allowfullscreen></iframe>
+
+      <h2>Existing Mobile Classrooms</h2>
+      <div class="galleryslide">
+        <div class="slidetrack">
+          <div class="slide">
+            <img src="img/slider1.jpg" alt="La Porte County Public Library Mobile Classroom">
+          </div>
+          <div class="slide">
+            <img src="img/slider2.jpg" alt="Mobile Training Unit">
+          </div>
+          <div class="slide">
+            <img src="img/slider3.jpg" alt="Mobile Classroom Interior 1">
+          </div>
+          <div class="slide">
+            <img src="img/slider4.jpg" alt="Mobile Classroom Interior 2">
+          </div>
+          <div class="slide">
+            <img src="img/slider5.jpg" alt="Mobile Classroom Interior 3">
+          </div>
+          <div class="slide">
+            <img src="img/slider6.jpg" alt="Mobile Classroom Interior 4">
+          </div>
+        </div>
+        <div class="slidecontrols">
+          <button class="carouselbutton" id="previousbutton">&#10094;</button>
+          <button class="carouselbutton" id="nexbutton">&#10095;</button>
+        </div>
+      </div>
+      <p>Mobile classrooms have made significant strides in recent years, especially in extending education to underserved and remote communities. These mobile units, often equipped with digital tools and internet access, have brought learning opportunities to students who might otherwise be left behind. However, despite this progress, accessibility remains a major challenge. Many regions still lack the infrastructure or funding to support consistent deployment, and connectivity issues can limit the effectiveness of mobile learning. To truly maximize their impact, mobile classrooms need greater investment in reliable technology, expanded coverage areas, and tailored educational content that meets the diverse needs of different communities.</p>
+
+      <video controls src="video/video1.mp4" alt="Mobile Classroom"></video>
+      <video controls src="video/video2.mp4" alt="Rock Valley College unveils new mobile classroom, the Tech Bus"></video>
+      <video controls src="video/video3.mp4" alt="STEM Lab turns into mobile classroom"></video>
+      <video controls src="video/video4.mp4" alt="UH Showcase: Solar Powered Mobile Classroom"></video>
+      <video controls src="video/video5.mp4" alt="Trolley, nag-transform bilang mobile classroom para maabot ang mga batang hirap... | 24 Oras"></video>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <p>For more information, collaboration, or inquiries, please reach out:</p>
+      <p><strong>Email:</strong> <a href="mailto:slspi.ronaldarnaez2@.com">slspi.ronaldarnaez2@.com</a></p>
+      <p><strong>Phone:</strong> 0963-379-8164</p>
+      <p><strong>Location:</strong> Baguio City, Philippines</p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Education on Wheels Project | All content attributed properly.
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll('main section');
+    const navButtons = document.querySelectorAll('nav button');
+
+    function showSection(id) {
+      sections.forEach(sec => {
+        if (sec.id === id) {
+          sec.classList.add('active');
+          sec.setAttribute('aria-hidden', 'false');
+        } else {
+          sec.classList.remove('active');
+          sec.setAttribute('aria-hidden', 'true');
+        }
+      });
+    }
+
+    function setActive(button) {
+      navButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+    }
+
+    const track = document.querySelector('.slidetrack');
+    const slides = Array.from(track.children);
+    const nextButton = document.getElementById('nexbutton');
+    const prevButton = document.getElementById('previousbutton');
+
+    let currentIndex = 0;
+
+    function updateSlidePosition() {
+      const slideWidth = slides[0].getBoundingClientRect().width;
+      track.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+    }
+
+    nextButton.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateSlidePosition();
+    });
+
+    prevButton.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      updateSlidePosition();
+    });
+
+    window.addEventListener('resize', updateSlidePosition);
+  </script>
+</body>
+</html>
